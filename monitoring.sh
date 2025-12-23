@@ -6,11 +6,6 @@ cpuphy=$(grep "physical id" /proc/cpuinfo | sort | uniq | wc -l)
 
 cpuvir=$(nproc)
 
-#memfree= $(free -m | awk '$1 == "Mem:" {print $2}') #display free/unused memory
-#memused= $(free -m | awk '$1 == "Mem:" {print $3}')
-#memcat=  $(free | awk '$1 == "Mem:" {printf("%.2f"), $3/$2*100}')
-#memstat= $(free | awk '$1 == "Mem:" {printf("%.2f"), $3/$2*100}')
-
 memfree=$(free -m | grep Mem | awk '{print $3}')
 memused=$(free -m | grep Mem | awk '{print $2}')
 memtotal=$(free -m | grep Mem | awk '{print $3/$2 * 100}')
