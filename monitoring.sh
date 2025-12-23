@@ -22,6 +22,12 @@ diskpercent=$(df -h / | tail -n 1 | awk '{print $5}')
 
 diskstat="${diskuse}/${disktot}GB (${diskpercent})"
 
+cpuusr=$(mpstat | tail -n 1 | awk '{print $4}')
+cpusyst=$(mpstat | tail -n 1 | awk '{print $6}')
+cputot=$(cpuusr + cpusyst)
+
+
+
 
 wall "	
 	#Architecture: $arch
@@ -29,7 +35,7 @@ wall "
 	#vCPU:$cpuvir
 	#Memmory Usage: $memstat
 	#Disk Usage: $diskstat
-	#CPU load:
+	#CPU load: $cputot 
 	#Last boot:
 	#LVM use:
 	#Connections TCP:
