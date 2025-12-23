@@ -22,13 +22,10 @@ diskpercent=$(df -h / | tail -n 1 | awk '{print $5}')
 
 diskstat="${diskuse}/${disktot}GB (${diskpercent})"
 
-cpuusr=$(mpstat | tail -n 1 | awk '{print $4}')
-cpusyst=$(mpstat | tail -n 1 | awk '{print $6}')
-cputot=$(echo "cpuusr + cpusyst%%")
-
-cpusr=$(mpstat 1 1 | awk '/^Average: +all/ {print $3}')
-cpusys=$(mpstat 1 1 | awk '/^Average: +all/ {print $5}')
+cpuusr=$(mpstat 1 1 | awk '/^Average: +all/ {print $4}')
+cpusyst=$(mpstat 1 1 | awk '/^Average: +all/ {print $6}')
 cputot=$(echo "$cpusr + $cpusys" | bc)
+cputot="${cputot}%"
 
 wall "
 	#Architecture: $arch
