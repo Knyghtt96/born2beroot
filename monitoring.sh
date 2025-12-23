@@ -24,7 +24,7 @@ diskstat="${diskuse}/${disktot}GB (${diskpercent})"
 
 cpuusr=$(mpstat | tail -n 1 | awk '{print $4}')
 cpusyst=$(mpstat | tail -n 1 | awk '{print $6}')
-cputot=$(cpuusr + cpusyst)
+cputot=$(echo "cpuusr + cpusyst%%")
 
 
 
