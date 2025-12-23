@@ -16,14 +16,19 @@ memused=$(free -m | grep Mem | awk '{print $2}')
 memtotal=$(free -m | grep Mem | awk '{print $3/$2 * 100}')
 memstat="${memfree}/${memused}MB ($(printf "%.2f" $memtotal)%)"
 
+diskuse=$(df -BG / | tail -n 1 | awk '{print $3}' | tr -d G)
+disktot=$(df -BG / | tail -n 1 | awk '{print $2}' | tr -d G)
+diskpercent=$(df -h / | tail -n 1 | awk '{print $5}')
+
+diskstat="${diskuse}/${disktot}GB (${diskpercent})"
 
 
-wall"	
+wall "	
 	#Architecture: $arch
 	#CPU Physical: $cpuphy
 	#vCPU:$cpuvir
 	#Memmory Usage: $memstat
-	#Disk Usage:
+	#Disk Usage: $diskstat
 	#CPU load:
 	#Last boot:
 	#LVM use:
