@@ -29,19 +29,19 @@ cputot=$(echo "cpuusr + cpusyst%%")
 
 
 
-wall "	
+wall "
 	#Architecture: $arch
 	#CPU Physical: $cpuphy
 	#vCPU:$cpuvir
 	#Memmory Usage: $memstat
 	#Disk Usage: $diskstat
-	#CPU load: $cputot 
+	#CPU load: $cputot
 	#Last boot:
 	#LVM use:
 	#Connections TCP:
 	#User log:
 	#Network:
-	#Sudo: 
+	#Sudo:
 "
 
 #https://42-cursus.gitbook.io/guide/1-rank-01/born2beroot/p2p-evaluation-questions
