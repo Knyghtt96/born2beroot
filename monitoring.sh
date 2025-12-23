@@ -20,7 +20,7 @@ diskstat="${diskuse}/${disktot}GB (${diskpercent})"
 cpuusr=$(mpstat 1 1 | awk '/^Average: +all/ {print $4}')
 cpusyst=$(mpstat 1 1 | awk '/^Average: +all/ {print $6}')
 cputot=$(echo "$cpusr + $cpusys" | bc)
-cputot="${cputot}%"
+cputot=$(echo "${cputot}%")
 
 wall "
 	#Architecture: $arch
