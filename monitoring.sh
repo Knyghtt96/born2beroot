@@ -21,7 +21,10 @@ cputot=$(mpstat 1 1 | awk '/Average:/ {printf "%.1f", 100 - $12}')
 
 boot=$(who -b | awk '{print $3 " " $4}')
 
-lvm=$(cat /etc/fstab | grep /dev/mapper | wc -l)
+lvm=$(lsblk | grep -q "lvm" && echo "yes" || echo "no")
+
+
+
 
 wall "
 #Architecture: $arch
