@@ -28,7 +28,7 @@ ulog=$(users | wc -w)
 ip=$(hostname -I | awk '{print $1}')
 mac=$(ip link show | awk '/ether/ {print $2}')
 
-sudo=$(grep "COMMAND=" /var/log/sudo/sudo.log | wc -l)
+sudo=$(journalctl _COMM=sudo | grep COMMAND= | wc -l)
 
 wall "
 #Architecture: $arch
